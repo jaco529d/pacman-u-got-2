@@ -25,8 +25,32 @@ class Ghost:
 
 
     def move(self, level):
-        self.col += random.randint(-1,1)
-        self.row += random.randint(-1,1)
+        moving = False
+        dir = ["up","down","left","right"]
+        #choose direction
+        direction = random.choice(dir)
+
+        #movement
+        if direction == "up":
+            if level.tiles[self.row-1][self.col] != "#":
+                self.row -= 1
+                moving = True
+        elif direction == "down":
+            if level.tiles[self.row+1][self.col] != "#":
+                self.row += 1
+                moving = True
+        elif direction == "left":
+            if level.tiles[self.row][self.col-1] != "#":
+                self.col -= 1
+                moving = True
+        elif direction == "right":
+            if level.tiles[self.row][self.col+1] != "#":
+                self.col += 1 
+                moving = True
+        #self.col += random.randint(-1,1)
+        #self.row += random.randint(-1,1)
+
+        print(direction, moving)
 
         self.tick += 1 
     
