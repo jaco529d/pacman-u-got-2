@@ -14,6 +14,9 @@ class PacMan:
         self.col = col
         self.row = row
 
+        self.x = self.col * 32
+        self.y = self.row * 32
+
         self.images = []
         for i in range(6):
             img = pg.image.load(f"images/pacman_{i}.png")
@@ -52,8 +55,22 @@ class PacMan:
 
         self.tick += 1 
     
-    def draw(self,screen):
+    
+      # Draw pacman
 
-        # Draw pacman
-        r = self.tick%6
-        screen.blit(self.images[r], (self.col*32, self.row*32)) 
+    def draw(self,screen,direction):
+        k = int(self.tick%6)
+        if direction == "left":
+            screen.blit(self.images[k], (self.x, self.y))
+        elif direction == "right":
+            screen.blit(pg.transform.rotate(self.images[k],180), (self.x, self.y))
+        elif direction == "up":
+            screen.blit(pg.transform.rotate(self.images[k],-90), (self.x, self.y))
+        elif direction == "down":
+            screen.blit(pg.transform.rotate(self.images[k],90), (self.x, self.y))
+        else:
+            screen.blit(self.images[0], (self.x, self.y))
+
+      
+     
+       # screen.blit(self.images[r], (self.col*32, self.row*32)) 
