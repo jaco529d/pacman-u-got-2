@@ -44,7 +44,6 @@ class Ghost:
 
         try:
             path = self.finder.find_path(start,end,grid)
-            print("path", path[0]) #brug try and except for ikke at finde en en tom liste og derved en fejl
             self.row = path[0][1][0]
             self.col = path[0][1][1]
         except:
