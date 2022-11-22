@@ -11,13 +11,17 @@ class Level:
             for line in level_file:
                 line = line.rstrip("\r\n") # Remove line endings
                 row = []
+                c = 0
                 for character in line:
                     row.append(character)
+                    c += 1
                     if character == "p":
                         print("found the P")
-                        self.player_pos_row = 5
-                        self.player_pos_col = 4
+                        
+                        self.player_pos_row = len(row)
+                        self.player_pos_col = c
                 self.tiles.append(row)
+        print(self.tiles)
     
 
     def draw(self, screen):
