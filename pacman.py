@@ -30,7 +30,6 @@ class PacMan:
             if level.tiles[self.row-1][self.col] != "#":
                 self.row -= 1
                 moving = True
-
         elif direction == "down":
             if level.tiles[self.row+1][self.col] != "#":
                 self.row += 1
@@ -52,8 +51,22 @@ class PacMan:
 
         self.tick += 1 
     
-    def draw(self,screen):
+    
+      # Draw pacman
 
-        # Draw pacman
-        r = self.tick%6
-        screen.blit(self.images[r], (self.col*32, self.row*32)) 
+    def draw(self,screen,direction):
+        k = int(self.tick%6)
+        if direction == "left":
+            screen.blit(self.images[k], (self.col * 32, self.row * 32))
+        elif direction == "right":
+            screen.blit(pg.transform.rotate(self.images[k],180), (self.col * 32, self.row * 32))
+        elif direction == "up":
+            screen.blit(pg.transform.rotate(self.images[k],-90), (self.col * 32, self.row * 32))
+        elif direction == "down":
+            screen.blit(pg.transform.rotate(self.images[k],90), (self.col * 32, self.row * 32))
+        else:
+            screen.blit(self.images[0], (self.col * 32, self.row * 32))
+
+      
+     
+       # screen.blit(self.images[r], (self.col*32, self.row*32)) 
