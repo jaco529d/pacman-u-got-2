@@ -1,5 +1,8 @@
 import pygame as pg
 import random
+from pathfinding.core.grid import Grid
+from pathfinding.finder.a_star import AStarFinder
+import rotate_matrix
 
 class Ghost:
 
@@ -23,15 +26,33 @@ class Ghost:
 
         self.tick = 0
 
+        self.finder = AStarFinder()
 
-    def move(self, level):
+
+    def move(self, level, target):
         moving = False
         dir = ["up","down","left","right"]
         #choose direction
         direction = random.choice(dir)
 
+        grid_rotated = rotate_matrix.clockwise(level.map)
+
+        grid = Grid(len(level.map[0]), len(level.map), grid_rotated)
+
+        start = grid.node(self.row,self.col)
+        end = grid.node(target.row,target.col)
+
+        try:
+            path = self.finder.find_path(start,end,grid)
+            print("path", path[0]) #brug try and except for ikke at finde en en tom liste og derved en fejl
+            self.row = path[0][1][0]
+            self.col = path[0][1][1]
+        except:
+            path = []
+        
         #movement
-        if direction == "up":
+        #self.row, self.col = path[0][0]
+        '''if direction == "up":
             if level.tiles[self.row-1][self.col] != "#":
                 self.row -= 1
                 moving = True
@@ -48,9 +69,7 @@ class Ghost:
                 self.col += 1 
                 moving = True
         #self.col += random.randint(-1,1)
-        #self.row += random.randint(-1,1)
-
-        print(direction, moving)
+        #self.row += random.randint(-1,1)'''
 
         self.tick += 1 
     
