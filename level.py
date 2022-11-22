@@ -19,7 +19,7 @@ class Level:
                         map_row.append(1)
                 self.tiles.append(row)
                 self.map.append(map_row)
-                print(map_row)
+                #print(map_row)
         
 
 
