@@ -23,7 +23,6 @@ while running:
         pacman = PacMan(level.player_pos_row, level.player_pos_col)
         ghost = Ghost(3,2)
         direction = None
-        level = Level("level.txt")
         screen = pg.display.set_mode((len(level.tiles[0])*32,len(level.tiles)*32))
         pg.display.set_caption("Pac-Man (clone)")
         state = "READY"
@@ -31,7 +30,7 @@ while running:
 
     elif state == "READY":
         text = font_press_enter.render("Press [Enter] to play", True, (220,220,10))
-        text_rect = text.get_rect(center=(8*32/2, 7*32/2)) 
+        text_rect = text.get_rect(center=(17*32/2, 21*32/2))
         screen.blit(text, text_rect)
 
         events = pg.event.get()
