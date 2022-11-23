@@ -22,7 +22,7 @@ running = True
 while running:
     
     if state == "LOAD":
-        level = Level("level.txt")
+        level = Level("level2.txt")
         pacman = PacMan(level.player_pos_row, level.player_pos_col)
         ghost = Ghost(3,2)
         direction = None
