@@ -1,4 +1,5 @@
 import pygame as pg
+import numpy as np
 
 class Level:
 
@@ -19,7 +20,9 @@ class Level:
                         map_row.append(1)
                 self.tiles.append(row)
                 self.map.append(map_row)
-                #print(map_row)
+        #print(self.map)
+        grid = np.array(self.map)
+        print(grid)
         
 
 
