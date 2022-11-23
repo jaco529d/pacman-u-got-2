@@ -23,8 +23,11 @@ class Level:
                     
                     c += 1
                     if character == "p":
-                        self.player_pos_row = len(row)
+                        self.player_pos_row = len(self.tiles)
                         self.player_pos_col = c
+                        print(self.player_pos_row)
+                        print(self.player_pos_col)
+                        print(row)
                 self.tiles.append(row)
                 self.map.append(map_row)
         
