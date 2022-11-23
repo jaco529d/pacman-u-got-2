@@ -25,7 +25,7 @@ while running:
         pacman = PacMan(0,1)
         ghost = Ghost(3,2)
         direction = None
-        level = Level("level.txt")
+        level = Level("level2.txt")
         state = "READY"
 
 
