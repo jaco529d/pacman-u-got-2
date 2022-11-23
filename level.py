@@ -28,6 +28,7 @@ class Level:
             for col_idx, tile in enumerate(row):
                 if tile == "#":
                     pg.draw.rect(screen, (10,10,250), pg.Rect(col_idx*32+1, row_idx*32+1, 30, 30), 1)
+                           
 
 
         
