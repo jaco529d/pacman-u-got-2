@@ -21,7 +21,7 @@ while running:
     if state == "LOAD":
         level = Level("level2.txt")
         pacman = PacMan(level.player_pos_row, level.player_pos_col)
-        ghost = Ghost(3,2)
+        ghost = Ghost(9,10)
         direction = None
         screen = pg.display.set_mode((len(level.tiles[0])*32,len(level.tiles)*32))
         pg.display.set_caption("Pac-Man (clone)")
@@ -39,7 +39,7 @@ while running:
                 running = False
             elif event.type == pg.KEYDOWN:
                 if event.key == pg.K_RETURN:
-                    state = "PLAY"
+                    state = "PLAY"      
 
         pg.display.flip()  
         time.sleep(0.1)
@@ -66,8 +66,9 @@ while running:
                     direction = "right"
                 elif event.key == pg.K_ESCAPE:
                     running = False
-
-
+                elif event.key == pg.K_v: 
+                    state = "END"
+        
         ## Move / logic ##
         pacman.move(level,direction)
         ghost.move(level, pacman)
