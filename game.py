@@ -20,10 +20,10 @@ while running:
     
     if state == "LOAD":
         level = Level("level2.txt")
-        pacman = PacMan(level.player_pos_row, level.player_pos_col)
+        pacman = PacMan(3,3)
         ghost = Ghost(3,2)
         direction = None
-        level = Level("level.txt")
+        level = Level("level2.txt")
         screen = pg.display.set_mode((len(level.tiles[0])*32,len(level.tiles)*32))
         pg.display.set_caption("Pac-Man (clone)")
         state = "READY"
