@@ -74,6 +74,8 @@ while running:
         pacman.move(level,direction)
         ghost.move(level, pacman)
 
+        if ghost.killed == True:
+            state = "END"
 
         ## Draw ##
         screen.fill((0,0,0)) 
@@ -86,3 +88,23 @@ while running:
 
         # Limit framerate by waiting a 10-100 milliseconds
         time.sleep(0.15)
+    
+    elif state == "END":
+        screen.fill((0,0,0))
+        text = font_press_enter.render("GAMEOVER", True, (220,220,10))
+        text_rect = text.get_rect(center=(17*32/2, 21*32/2))
+        screen.blit(text, text_rect)
+
+        # Update window with newly drawn pixels
+        pg.display.flip() 
+
+        ## Handle events (keypresses etc.)
+        events = pg.event.get()
+        for event in events:
+
+            # Close window (e.g. pressing [x] or Ctrl+F4)
+            if event.type == pg.QUIT:
+                running = False
+            elif event.type == pg.KEYDOWN:
+                if event.key == pg.K_ESCAPE:
+                    running = False

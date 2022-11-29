@@ -18,6 +18,8 @@ class Ghost:
         self.col = col
         self.row = row
 
+        self.killed = False
+
         self.images = []
         for i in range(2):
             img = pg.image.load(f"images/ghost_{i}.png")
@@ -31,6 +33,7 @@ class Ghost:
 
     def move(self, level, target):
         moving = False
+
         if self.tick%2:
             moving = True
         grid_rotated = rotate_matrix.clockwise(level.map)
@@ -48,6 +51,8 @@ class Ghost:
         except:
             path = []
 
+        if self.row == target.row and self.col == target.col:
+            self.killed = True
         self.tick += 1 
     
     def draw(self,screen):
