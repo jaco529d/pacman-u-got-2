@@ -24,8 +24,11 @@ class Level:
                     
                     c += 1
                     if character == "p":
-                        self.player_pos_row = len(row)
+                        self.player_pos_row = len(self.tiles)
                         self.player_pos_col = c
+                        print(self.player_pos_row)
+                        print(self.player_pos_col)
+                        print(row)
                 self.tiles.append(row)
                 self.map.append(map_row)
 
@@ -38,8 +41,4 @@ class Level:
         for row_idx, row in enumerate(self.tiles):
             for col_idx, tile in enumerate(row):
                 if tile == "#":
-                    pg.draw.rect(screen, (10,10,250), pg.Rect(col_idx*32+1, row_idx*32+1, 30, 30), 1)
-                           
-
-
-        
+                    pg.draw.rect(screen, (10,10,250), pg.Rect(col_idx*32+1, row_idx*32+1, 30, 30), 1) 
