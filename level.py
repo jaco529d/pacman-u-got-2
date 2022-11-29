@@ -9,6 +9,8 @@ class Level:
         self.map = [] #for the pathfinding
         self.player_pos_row = 0
         self.player_pos_col = 0
+        self.ghost_pos_row = 0
+        self.ghost_pos_col = 0
         with open(file, "r") as level_file:
             for line in level_file:
                 line = line.rstrip("\r\n") # Remove line endings
@@ -26,15 +28,15 @@ class Level:
                     if character == "p":
                         self.player_pos_row = len(self.tiles)
                         self.player_pos_col = c
-                        print(self.player_pos_row)
-                        print(self.player_pos_col)
-                        print(row)
+                    elif character == "g":
+                        self.ghost_pos_row = len(self.tiles)
+                        self.ghost_pos_col = c
+                        print(self.ghost_pos_row)
+                        print(self.ghost_pos_col)
                 self.tiles.append(row)
                 self.map.append(map_row)
 
         grid = np.array(self.map)
-        print(grid)
-        
 
 
     def draw(self, screen):

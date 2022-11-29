@@ -31,10 +31,8 @@ class Ghost:
 
     def move(self, level, target):
         moving = False
-        dir = ["up","down","left","right"]
-        #choose direction
-        direction = random.choice(dir)
-
+        if self.tick%2:
+            moving = True
         grid_rotated = rotate_matrix.clockwise(level.map)
 
         grid = Grid(len(level.map[0]), len(level.map), grid_rotated)
@@ -44,8 +42,9 @@ class Ghost:
 
         try:
             path = self.finder.find_path(start,end,grid)
-            self.row = path[0][1][0]
-            self.col = path[0][1][1]
+            if moving == True:
+                self.row = path[0][1][0]
+                self.col = path[0][1][1]
         except:
             path = []
 
